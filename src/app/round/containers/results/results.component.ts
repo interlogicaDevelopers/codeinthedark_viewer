@@ -4,14 +4,13 @@ import { Component, OnInit } from '@angular/core';
 import { ViewerService } from '../../../core/viewer.service';
 
 @Component({
-  selector: 'app-round-countdown',
-  styleUrls: ['./countdown.component.css'],
+  selector: 'app-round-results',
+  styleUrls: ['./results.component.css'],
   template: `
-    <h1>Remaining time to the next round:</h1>
-    <p>{{ timeLeft }}</p>
+    <h1>Results of the round:</h1>
   `
 })
-export class CountdownComponent implements OnInit {
+export class ResultsComponent implements OnInit {
   timeLeft: number;
 
   constructor(private viewerService: ViewerService) {}

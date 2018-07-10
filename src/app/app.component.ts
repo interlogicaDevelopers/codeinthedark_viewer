@@ -25,6 +25,15 @@ export class AppComponent implements OnInit {
         case 'ROUND_COUNTDOWN':
           this.router.navigate(['round/countdown']);
           break;
+        case 'ROUND_END_COUNTDOWN':
+        this.router.navigate(['round/start']);
+          break;
+        case 'VOTE_COUNTDOWN':
+          this.router.navigate(['round/voting']);
+          break;
+        case 'SHOWING_RESULTS':
+          this.router.navigate(['round/results']);
+          break;
         default:
           this.router.navigate(['/']);
       }

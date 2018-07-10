@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'round',
     loadChildren: 'src/app/round/round.module#RoundModule'
+  },
+  {
+    path: 'winners',
+    loadChildren: 'src/app/winners/winners.module#WinnersModule'
   }
 ];
 
