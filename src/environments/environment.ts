@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ws_url: 'http://ec2-34-244-85-95.eu-west-1.compute.amazonaws.com:3000'
+  ws_url: 'http://admin.codeinthedark.interlogica.it:3000'
 };
 
 /*
