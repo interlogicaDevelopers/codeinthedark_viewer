@@ -1,11 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy, PipeTransform, Pipe } from '@angular/core';
+import { Subscription, forkJoin } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { mergeMap } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 
 // services
 import { ViewerService } from '../../../core/viewer.service';
+
+@Pipe({ name: 'slice' })
+export class SlicePipe implements PipeTransform {
+  transform(value: object[], number: number) {
+    return value.splice(number);
+  }
+}
 
 @Component({
   selector: 'app-round-results',
@@ -15,6 +22,7 @@ import { ViewerService } from '../../../core/viewer.service';
 export class ResultsComponent implements OnInit, OnDestroy {
   players: any[] = [];
   isLoading: Boolean = true;
+  isLast: Boolean = false;
 
   private viewerServiceSub: Subscription;
 
@@ -25,9 +33,15 @@ export class ResultsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.viewerServiceSub = this.viewerService.state.pipe(
-      mergeMap((resp: any) => this.http.get(`${environment.ws_url}/vote/${resp.data.round}`))
-    ).subscribe((players: any) => {
-      this.players = players;
+      mergeMap((resp: any) => {
+        return forkJoin([
+          this.http.get(`${environment.ws_url}/round/${resp.data.round}`),
+          this.http.get(`${environment.ws_url}/vote/${resp.data.round}`)
+        ]);
+      })
+    ).subscribe((results: any) => {
+      this.isLast = results[0].last;
+      this.players = results[1];
       this.isLoading = false;
     });
   }

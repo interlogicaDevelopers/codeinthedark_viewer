@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./loader.component.css'],
   template: `
     <div class="loader animated pulse">
-      Loading...
+      L04d1n9...
     </div>
   `
 })

@@ -25,7 +25,7 @@ export class StartComponent implements OnInit, OnDestroy {
   isTimesUp = false;
 
   private viewerServiceSub: Subscription;
-  private videoId = 'rioe3YISiQs';
+  private videoId: String;
   private countdownId = 'AAOh91P6x60';
 
   constructor(
@@ -34,7 +34,7 @@ export class StartComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.videoSrc = this.setVideoURL(this.videoId);
+    this.videoSrc = this.setVideoURL();
 
     this.viewerServiceSub = this.viewerService.state.subscribe((msg: any) => {
       this.missing = msg.data.missing;
@@ -55,7 +55,15 @@ export class StartComponent implements OnInit, OnDestroy {
     this.viewerServiceSub.unsubscribe();
   }
 
-  private setVideoURL(videoId: string) {
-    return `https://www.youtube.com/embed/${videoId}?rel=0?version=3&loop=1&showinfo=0&controls=0&modestbranding=1&autoplay=1&mute=1`;
+  private setVideoURL() {
+    const videoId = this.viewerService.videoPlaylist[this.viewerService.videoQueue];
+
+    if (this.viewerService.videoQueue === 4) {
+      this.viewerService.videoQueue = 0;
+    } else {
+      this.viewerService.videoQueue += 1;
+    }
+
+    return `https://www.youtube.com/embed/${videoId}?rel=0?version=3&loop=1&playlist=${videoId}&showinfo=0&controls=0&modestbranding=1&autoplay=1&mute=1`;
   }
 }

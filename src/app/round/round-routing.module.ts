@@ -6,6 +6,7 @@ import { CountdownComponent } from './containers/countdown/countdown.component';
 import { StartComponent } from './containers/start/start.component';
 import { VotingComponent } from './containers/voting/voting.component';
 import { ResultsComponent } from './containers/results/results.component';
+import { TimesupComponent } from './components/timesup/timesup.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'start',
         component: StartComponent
+      },
+      {
+        path: 'receive-layouts',
+        component: TimesupComponent
       },
       {
         path: 'voting',

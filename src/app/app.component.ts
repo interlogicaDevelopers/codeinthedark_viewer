@@ -20,13 +20,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.viewerService.state.subscribe((data: any) => {
-      console.log(data);
       switch (data.type) {
         case 'ROUND_COUNTDOWN':
           this.router.navigate(['round/countdown']);
           break;
         case 'ROUND_END_COUNTDOWN':
         this.router.navigate(['round/start']);
+          break;
+        case 'RECEIVING_RESULTS':
+          this.router.navigate(['round/receive-layouts']);
           break;
         case 'VOTE_COUNTDOWN':
           this.router.navigate(['round/voting']);

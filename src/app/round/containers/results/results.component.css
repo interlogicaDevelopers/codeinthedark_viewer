@@ -19,6 +19,13 @@
   background: rgba(0,0,0,.6);
 }
 
+.container.last {
+  background: url('/assets/images/crowd-bg.jpg') no-repeat;
+  background-size: cover;
+}
+
+.container.last::before { background: rgba(0,0,0,.4) }
+
 .container__results {
   width: 65%;
   margin-top: auto;
@@ -69,6 +76,73 @@
   background-color: white;
   color: black;
   font-weight: bold;
+}
+
+.container__results__final {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container__results__final div {
+  text-align: center;
+  width: 50%;
+}
+
+.container__results__final .winner {
+  text-align: center;
+  font-size: 4vh;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.container__results__final .winner > .trophy {
+  position: relative;
+  width: 50%;
+  margin: 5vh auto;
+}
+
+.container__results__final .winner > .trophy p {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  color: #000;
+  font-weight: bold;
+  font-size: 6vh;
+  margin-left: .5vh;
+  margin-top: 3.5vh;
+  letter-spacing: -1vh;
+}
+
+.container__results__final .winner h3 { margin: 0 }
+
+.container__results__final .winner p.points {
+  font-weight: normal;
+  text-transform: none;
+  font-size: 3vh;
+  margin: 0;
+}
+
+.container__results__final .ranking .player {
+  display: table;
+  width: 100%;
+  margin: 0 auto
+}
+
+.container__results__final .ranking .player:not(:last-child) {
+  margin-bottom: 5vh;
+}
+
+.container__results__final .ranking .player span {
+  display: table-cell;
+  font-size: 2.5vh
+}
+
+.container__results__final .ranking .player span:nth-child(1),
+.container__results__final .ranking .player span:nth-child(3) { width: 20% }
+.container__results__final .ranking .player span:nth-child(2) {
+  width: 60%;
+  text-align: left;
 }
 
 .container__footer {
