@@ -64,6 +64,6 @@ export class StartComponent implements OnInit, OnDestroy {
       this.viewerService.videoQueue += 1;
     }
 
-    return `https://www.youtube.com/embed/${videoId}?rel=0?version=3&loop=1&playlist=${videoId}&showinfo=0&controls=0&modestbranding=1&autoplay=1&mute=1`;
+    return `https://www.youtube.com/embed/${videoId}?rel=0?version=3&loop=1&playlist=${videoId}&showinfo=0&controls=0&modestbranding=1&autoplay=1&mute=1&&iv_load_policy=3`;
   }
 }
